@@ -10,7 +10,7 @@ public class MyFrame extends JFrame {
     private PanelBase base;
     private PanelMenu menu;
 
-    MyFrame() {
+    public MyFrame() {
         super("Ciclo de Carnot");
         this.setSize(1000, 500);
         this.setMinimumSize(new Dimension(400, 400));

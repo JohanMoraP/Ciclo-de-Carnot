@@ -1,3 +1,5 @@
+package view;
+
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -44,7 +46,6 @@ public class Interfaz extends JFrame {
 
         Font labelFont = new Font("Arial", Font.ITALIC, 18);
 
-
         JLabel label = new JLabel("Ciclo de Carnot");
         label.setFont(new Font("Arial", Font.ITALIC, 25));
         label.setBorder(labelBorder);
@@ -52,13 +53,13 @@ public class Interfaz extends JFrame {
 
         JLabel label2 = new JLabel("Gráfico");
         label2.setFont(labelFont);
-        label2.setIcon(icon); 
+        label2.setIcon(icon);
         label2.setBorder(labelBorder);
         panel.add(label2, constraints);
 
         JLabel label3 = new JLabel("Explicación");
         label3.setFont(labelFont);
-        label3.setIcon(icon2); 
+        label3.setIcon(icon2);
         label3.setBorder(labelBorder);
         panel.add(label3, constraints);
 
@@ -68,13 +69,10 @@ public class Interfaz extends JFrame {
         GridBagConstraints imageConstraints = new GridBagConstraints();
         imageConstraints.gridx = 0;
         imageConstraints.gridy = 0;
-        imageConstraints.weighty = 1.0; 
-        imageConstraints.anchor = GridBagConstraints.CENTER; 
+        imageConstraints.weighty = 1.0;
+        imageConstraints.anchor = GridBagConstraints.CENTER;
         panel2.add(imageLabel, imageConstraints);
-        
-        
 
-       
         JList<String> list = new JList<>();
         DefaultListModel<String> listModel = new DefaultListModel<>();
         list.setFont(new Font("Arial", Font.ROMAN_BASELINE, 15));
@@ -87,8 +85,8 @@ public class Interfaz extends JFrame {
         GridBagConstraints listConstraints = new GridBagConstraints();
         listConstraints.gridx = 1;
         listConstraints.gridy = 0;
-        listConstraints.weighty = 1.0; 
-        listConstraints.anchor = GridBagConstraints.WEST; 
+        listConstraints.weighty = 1.0;
+        listConstraints.anchor = GridBagConstraints.WEST;
         panel2.add(list, listConstraints);
 
         JPanel buttonPanel = new JPanel();
@@ -99,15 +97,15 @@ public class Interfaz extends JFrame {
 
         GridBagConstraints buttonPanelConstraints = new GridBagConstraints();
         buttonPanelConstraints.gridx = 0;
-        buttonPanelConstraints.gridy = 3; 
-        buttonPanelConstraints.insets = new Insets(10, 0, 0, 60); 
+        buttonPanelConstraints.gridy = 3;
+        buttonPanelConstraints.insets = new Insets(10, 0, 0, 60);
         panel2.add(buttonPanel, buttonPanelConstraints);
-        constraints.weightx = 0.15; 
-        constraints.weighty = 1.0;  
+        constraints.weightx = 0.15;
+        constraints.weighty = 1.0;
 
         container.add(panel, constraints);
 
-        constraints.weightx = 0.85; 
+        constraints.weightx = 0.85;
         container.add(panel2, constraints);
 
         this.setSize(1000, 700);

@@ -7,8 +7,8 @@ import java.awt.Dimension;
 import java.awt.event.ActionListener;
 
 public class MyFrame extends JFrame {
-    private PanelBase base;
-    private PanelMenu menu;
+    private Panel1 base;
+    private Panel2 menu;
 
     public MyFrame() {
         super("Ciclo de Carnot");
@@ -20,14 +20,15 @@ public class MyFrame extends JFrame {
         this.pack();
         this.setVisible(true);
         this.setExtendedState(MAXIMIZED_BOTH);
+        this.setLocationRelativeTo(null);
     }
 
     public void initComponents() {
         setLayout(new BorderLayout());
-        menu = new PanelMenu();
+        menu = new Panel2;
         add(menu, BorderLayout.WEST);
 
-        base = new PanelBase();
+        base = new Panel1();
         int espacio = 15;
         base.setBorder(BorderFactory.createEmptyBorder(espacio, espacio, espacio, espacio));
         add(base, BorderLayout.CENTER);

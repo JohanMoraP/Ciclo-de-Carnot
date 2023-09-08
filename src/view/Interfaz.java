@@ -16,6 +16,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.Toolkit;
 
 public class Interfaz extends JFrame {
     public Interfaz() {
@@ -34,12 +35,12 @@ public class Interfaz extends JFrame {
         EmptyBorder labelBorder = new EmptyBorder(0, leftSpacing, 0, 0);
         constraints.gridheight = 3;
 
-        ImageIcon originalIcon = new ImageIcon("data/icono.png");
+        ImageIcon originalIcon = new ImageIcon("images/graph.png");
         Image image = originalIcon.getImage();
         Image scaledImage = image.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
         ImageIcon icon = new ImageIcon(scaledImage);
 
-        ImageIcon originalIcon2 = new ImageIcon("data/icono2.png");
+        ImageIcon originalIcon2 = new ImageIcon("images/info.png");
         Image image2 = originalIcon2.getImage();
         Image scaledImage2 = image2.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
         ImageIcon icon2 = new ImageIcon(scaledImage2);
@@ -51,19 +52,21 @@ public class Interfaz extends JFrame {
         label.setBorder(labelBorder);
         panel.add(label, constraints);
 
-        JLabel label2 = new JLabel("Gráfico");
+        JButton label2 = new JButton("Gráfico");
+        label2.setBackground(null);
         label2.setFont(labelFont);
         label2.setIcon(icon);
         label2.setBorder(labelBorder);
         panel.add(label2, constraints);
 
-        JLabel label3 = new JLabel("Explicación");
+        JButton label3 = new JButton("Explicación");
+        label3.setBackground(null);
         label3.setFont(labelFont);
         label3.setIcon(icon2);
         label3.setBorder(labelBorder);
         panel.add(label3, constraints);
 
-        ImageIcon icon3 = new ImageIcon("data/imagen.png");
+        ImageIcon icon3 = new ImageIcon("images/imagen.png");
         JLabel imageLabel = new JLabel(icon3);
         imageLabel.setBorder(new EmptyBorder(0, 0, 0, 100));
         GridBagConstraints imageConstraints = new GridBagConstraints();

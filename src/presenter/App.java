@@ -1,17 +1,16 @@
 package presenter;
 
 import model.Logic;
-import view.MyFrame;
+import view.View;
 
 public class App {
-    private MyFrame frame;
+    private View view;
     private Logic logic;
 
-    App() {
-        frame = new MyFrame();
+    public App() {
+        view = new View();
         logic = new Logic();
     }
-
     public static void main(String[] args) {
         new App();
     }

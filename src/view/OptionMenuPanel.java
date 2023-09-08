@@ -12,11 +12,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class OptionMenuPanel extends JPanel{
+public class OptionMenuPanel extends JPanel {
 
 	public OptionMenuPanel() {
 		initComponents();
 	}
+
 	public void initComponents() {
 		this.setBackground(new Color(75, 162, 181));
 		this.setLayout(new GridLayout(9, 1));
@@ -30,11 +31,10 @@ public class OptionMenuPanel extends JPanel{
 		label.setFont(new Font("Arial", Font.ITALIC, 25));
 		label.setBorder(labelBorder);
 		this.add(label, constraints);
-		JButton button1 = new CustomMenuButton("Gráfico", new ImageIcon("data/icono.png"));
+		JButton button1 = new CustomMenuButton("Gráfico", new ImageIcon("images/icono.png"));
 		this.add(button1, constraints);
-		JButton button2 = new CustomMenuButton("Explicación", new ImageIcon("data/icono2.png"));
+		JButton button2 = new CustomMenuButton("Explicación", new ImageIcon("images/icono2.png"));
 		this.add(button2, constraints);
 
 	}
 }
-

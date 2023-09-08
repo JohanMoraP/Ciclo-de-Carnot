@@ -3,6 +3,8 @@ package view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -10,7 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.border.EmptyBorder;
 
-public class CustomMenuButton extends JButton implements MouseListener{
+public class CustomMenuButton extends JButton implements MouseListener, FocusListener{
 	private ImageIcon originalIcon;
 	public CustomMenuButton(String text, ImageIcon originalIcon) {
 		super(text);
@@ -29,6 +31,7 @@ public class CustomMenuButton extends JButton implements MouseListener{
         this.setBackground(new Color(75, 162, 181));
         this.setForeground(Color.WHITE);
         this.addMouseListener(this);
+        this.addFocusListener(this);
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -55,5 +58,16 @@ public class CustomMenuButton extends JButton implements MouseListener{
 		// TODO Auto-generated method stub
 		this.setBackground(new Color(75, 162, 181));
 		
+	}
+	@Override
+	public void focusGained(FocusEvent e) {
+		// TODO Auto-generated method stub
+		this.setBackground(new Color(99,207,231));
+		
+	}
+	@Override
+	public void focusLost(FocusEvent e) {
+		// TODO Auto-generated method stub
+		this.setBackground(new Color(75, 162, 181));
 	}
 }

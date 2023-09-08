@@ -11,8 +11,6 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import static java.awt.Frame.base;
-
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;

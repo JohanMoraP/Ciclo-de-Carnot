@@ -14,13 +14,15 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class PrincipalPanel extends JPanel{
+public class PrincipalPanel extends JPanel {
 	private JLabel imageLabel;
 	private JList<String> list;
-	public PrincipalPanel(){
+
+	public PrincipalPanel() {
 		initComponents();
 	}
-	private void initComponents(){
+
+	private void initComponents() {
 		this.setBackground(new Color(255, 255, 255));
 		this.setLayout(new GridBagLayout());
 		ImageIcon icon3 = new ImageIcon("data/imagen.png");
@@ -48,8 +50,10 @@ public class PrincipalPanel extends JPanel{
 		listConstraints.anchor = GridBagConstraints.WEST;
 		this.add(list, listConstraints);
 		JPanel buttonPanel = new JPanel();
-		CustomButton button3 = new CustomButton("Anterior etapa", new Color(75, 162, 181), Color.GRAY, Color.WHITE, null);
-		CustomButton button4 = new CustomButton("Siguiente etapa", new Color(75, 162, 181), Color.GRAY, Color.WHITE, null);
+		CustomButton button3 = new CustomButton("Anterior etapa", new Color(75, 162, 181), Color.GRAY, Color.WHITE,
+				null);
+		CustomButton button4 = new CustomButton("Siguiente etapa", new Color(75, 162, 181), Color.GRAY, Color.WHITE,
+				null);
 		buttonPanel.add(button3);
 		buttonPanel.add(button4);
 		GridBagConstraints buttonPanelConstraints = new GridBagConstraints();

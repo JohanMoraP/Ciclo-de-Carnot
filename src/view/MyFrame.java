@@ -23,7 +23,9 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 
 public class MyFrame extends JFrame {
-	Container container;
+	private Container container;
+	private OptionMenuPanel menu;
+	private PrincipalPanel base;
 
 	public MyFrame() {
 
@@ -46,9 +48,11 @@ public class MyFrame extends JFrame {
 		constraints.fill = GridBagConstraints.BOTH;
 		constraints.gridheight = 3;
 		constraints.weightx = 0.15;
-		add(new OptionMenuPanel(), constraints);
+		menu = new OptionMenuPanel();
+		add(menu, constraints);
 		constraints.weighty = 1.0;
 		constraints.weightx = 0.85;
-		container.add(new PrincipalPanel(), constraints);
+		base = new PrincipalPanel();
+		container.add(base, constraints);
 	}
 }

@@ -30,7 +30,7 @@ public class PrincipalPanel extends JPanel{
 		//imageLabel.setBorder(new EmptyBorder(0, 0, 0, 100));
 		GridBagConstraints imageConstraints = new GridBagConstraints();
 		imageConstraints.gridx = 0;
-		imageConstraints.gridy = 1;
+		imageConstraints.gridy = 2;
 		//imageConstraints.weighty = 1;
 		imageConstraints.gridheight = 3;
 		imageConstraints.fill = GridBagConstraints.BOTH;
@@ -39,13 +39,15 @@ public class PrincipalPanel extends JPanel{
 
 		JList<String> list = new JList<>();
 		DefaultListModel<String> listModel = new DefaultListModel<>();
-		JLabel variable1 = new JLabel("Variable 1: ");
-		JLabel variable2 = new JLabel("Variable 2: ");
-		JLabel variable3 = new JLabel("Variable 3: ");
+		JLabel variable1 = new JLabel("Presión inicial: ");
+		JLabel variable2 = new JLabel("Volumen inicial: ");
+		JLabel variable3 = new JLabel("Volumen máximo: ");
+		JLabel variable4 = new JLabel("Temperatura final: ");
 		variable3.setBackground(Color.BLACK);
 		JTextArea varArea1 = new JTextArea("0"); 
 		JTextArea varArea2 = new JTextArea("0");
 		JTextArea varArea3 = new JTextArea("0");
+		JTextArea varArea4 = new JTextArea("0");
 		varArea1.setColumns(10);
 		varArea1.setLineWrap(true); 
 		varArea1.setWrapStyleWord(true);
@@ -55,10 +57,14 @@ public class PrincipalPanel extends JPanel{
 		varArea3.setColumns(10);
 		varArea3.setLineWrap(true); 
 		varArea3.setWrapStyleWord(true);
+		varArea4.setColumns(10);
+		varArea4.setLineWrap(true); 
+		varArea4.setWrapStyleWord(true);
 		
 		this.add(variable1, new GridBagConstraints(1, 0, 1, 1,0,0,GridBagConstraints.CENTER,GridBagConstraints.BOTH,new Insets(0,0,0,0), 1, 0));
 		this.add(variable2, new GridBagConstraints(1, 1, 1, 1,0,0,GridBagConstraints.CENTER,GridBagConstraints.BOTH,new Insets(0,0,0,0), 1, 0));
 		this.add(variable3, new GridBagConstraints(1, 2, 1, 1,0,0,GridBagConstraints.CENTER,GridBagConstraints.BOTH,new Insets(0,0,0,0), 1, 0));
+		this.add(variable4, new GridBagConstraints(1, 3, 1, 1,0,0,GridBagConstraints.CENTER,GridBagConstraints.BOTH,new Insets(0,0,0,0), 1, 0));
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setViewportView(varArea1);
 		this.add(scrollPane, new GridBagConstraints(2, 0, 1, 1,0,0,GridBagConstraints.CENTER,GridBagConstraints.BOTH,new Insets(0,0,0,0), 1, 0));
@@ -68,6 +74,9 @@ public class PrincipalPanel extends JPanel{
 		JScrollPane scrollPane3 = new JScrollPane();
 		scrollPane3.setViewportView(varArea3);
 		this.add(scrollPane3, new GridBagConstraints(2, 2, 1, 1,0,0,GridBagConstraints.CENTER,GridBagConstraints.BOTH,new Insets(0,0,0,0), 1, 0));
+		JScrollPane scrollPane4 = new JScrollPane();
+		scrollPane4.setViewportView(varArea4);
+		this.add(scrollPane4, new GridBagConstraints(2, 3, 1, 1,0,0,GridBagConstraints.CENTER,GridBagConstraints.BOTH,new Insets(0,0,0,0), 1, 0));
 		list.setFont(new Font("Arial", Font.ROMAN_BASELINE, 15));
 		listModel.addElement("Variable:__________");
 		listModel.addElement("Variable:__________");
@@ -87,7 +96,7 @@ public class PrincipalPanel extends JPanel{
 		buttonPanel.add(button4);
 		GridBagConstraints buttonPanelConstraints = new GridBagConstraints();
 		buttonPanelConstraints.gridx = 0;
-		buttonPanelConstraints.gridy = 4;
+		buttonPanelConstraints.gridy = 5;
 		buttonPanelConstraints.insets = new Insets(10, 0, 0, 60);
 		this.add(buttonPanel, buttonPanelConstraints);
 

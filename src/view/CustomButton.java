@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.FocusEvent;
@@ -20,6 +21,7 @@ public class CustomButton extends JButton implements MouseListener, FocusListene
 		super(text);
 		this.fontColor = fontColor;
 		this.background = background;
+		this.actionColor = actionColor;
 		this.setForeground(fontColor);
 		this.setBackground(background);
 		this.originalIcon = icon;
@@ -51,12 +53,14 @@ public class CustomButton extends JButton implements MouseListener, FocusListene
 		// TODO Auto-generated method stub
 		this.setBackground(actionColor);
 		this.setForeground(Color.DARK_GRAY);
+		this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	}
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		this.setBackground(background);
 		this.setForeground(fontColor);
+		this.setCursor(Cursor.getDefaultCursor());
 	}
 	@Override
 	public void focusGained(FocusEvent e) {

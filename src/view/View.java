@@ -1,39 +1,37 @@
 package view;
 
-import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.Insets;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class View extends JFrame {
-	public View() {
-		Container container = this.getContentPane();
-		container.setLayout(new GridBagLayout());
+	private PrincipalPanel principalPanel;
+	
+	public View(ActionListener action) {
+		this.setLayout(new GridBagLayout());
+		
+		this.setSize(1000, 700);
+		this.setLocationRelativeTo(null);
+		initComponents(action);
+		this.setTitle("Graficadora del ciclo de Carnot");
+		this.setVisible(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+	}
+	private void initComponents(ActionListener action) {
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.fill = GridBagConstraints.BOTH;
 		constraints.gridheight = 3;
 		constraints.weightx = 0.15;
-		container.add(new OptionMenuPanel(), constraints);
 		constraints.weighty = 1.0;
 		constraints.weightx = 0.85;
-		container.add(new PrincipalPanel(), constraints);
-		this.setSize(1000, 700);
-		this.setTitle("Graficadora del ciclo de Carnot");
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setVisible(true);
-		this.setLocationRelativeTo(null);
+		principalPanel = new PrincipalPanel(action);
+		this.add(new OptionMenuPanel(), constraints);
+		this.add(principalPanel, constraints);
+	}
+	public void paintGraphic(ArrayList<double []>coordenates) {
+		principalPanel.paintGraphic(coordenates);
 	}
 }

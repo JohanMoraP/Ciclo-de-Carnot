@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.FocusEvent;
@@ -52,12 +53,13 @@ public class CustomMenuButton extends JButton implements MouseListener, FocusLis
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 		this.setBackground(new Color(99,207,231));
+		this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	}
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		this.setBackground(new Color(75, 162, 181));
-		
+		this.setCursor(Cursor.getDefaultCursor());
 	}
 	@Override
 	public void focusGained(FocusEvent e) {

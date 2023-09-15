@@ -1,5 +1,7 @@
 package model;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 
 public class Logic {
@@ -82,4 +84,90 @@ public class Logic {
 		v2=(Math.pow((t3/t2),(1/(gamma-1)))*v3);
 		p2=(r*t2)/(v2);
 	}
+
+	public String  valueFormatValues(String[] dataValues) {
+		String message="Existe un error al ingresar los datos en los siguientes campos: ";
+		boolean comprovateError=false;
+
+		for (int i = 0; i < dataValues.length; i++) {
+			if ( notIsNumber(dataValues[i])) {
+				message+=createMessageError(1, slotSelector(i+1));
+				comprovateError=true;}
+			else {
+				if(comparatorMaxnumber(dataValues[i])) {
+					message+=createMessageError(2, slotSelector(i+1));
+					comprovateError=true;}
+			}
+		} 
+//		if(!comprovateError) {
+//			for (int i = 0; i < dataValues.length; i++) {
+//				if(comparatorMaxnumber(dataValues[i])) {
+//					message+=createMessageError(2, slotSelector(i+1));
+//					comprovateError=true;}
+//			}
+//		}
+//		
+
+		if(comprovateError) {
+			return message;
+		}else {
+			return null;
+		}
+
+	}
+
+	public String createMessageError(int errorNum, String Space) {
+		String message;
+		if(errorNum==1) {
+			message="\n-En el campo "+Space+" hay valores no numericos";
+		}else {
+			message="\n-En el campo "+Space+" execede el limite numerico soportado (2,147,483,648)";
+		}
+		return message;
+	}
+
+	public boolean notIsNumber(String text) {
+		boolean comprovator=false;
+		int countPoint=0;
+		for (int i = 0; i < text.length(); i++) {
+			if(text.charAt(i)=='.' && countPoint==0) {
+				countPoint++;
+			}
+			else if ((text.charAt(i)=='.' && countPoint>0) || Character.isDigit(text.charAt(i))==false ) {
+				return true;
+			}}
+		return comprovator;
+	}
+
+	
+	
+	
+	
+	public boolean comparatorMaxnumber(String text) {
+		boolean comprovator=false;
+		BigDecimal bigdec;
+		bigdec = new BigDecimal(text);
+		BigDecimal maxDecimal = BigDecimal.valueOf((double)(1000000000*100));
+
+		if(bigdec.compareTo(maxDecimal) > 0) {
+			comprovator=true;
+		}
+		return comprovator;
+	}
+
+	public String slotSelector(int num) {
+		if(num==1) {
+			return "presion inicial";
+		}else if(num==2) {
+			return "volumen inicial";
+		}else if(num==3) {
+			return "volumen maximo";
+		}else {
+			return "temperatura final";
+		}
+	}
+
+
+
+
 }

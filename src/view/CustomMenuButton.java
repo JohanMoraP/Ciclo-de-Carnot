@@ -29,7 +29,7 @@ public class CustomMenuButton extends JButton implements MouseListener, FocusLis
 		this.setFont(new Font("Arial", Font.ITALIC, 18));
         this.setIcon(icon);
         this.setBorder(labelBorder);
-        this.setBackground(new Color(75, 162, 181));
+        this.setBackground(new Color(45, 132, 151));
         this.setForeground(Color.WHITE);
         this.addMouseListener(this);
         this.addFocusListener(this);
@@ -58,7 +58,7 @@ public class CustomMenuButton extends JButton implements MouseListener, FocusLis
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		this.setBackground(new Color(75, 162, 181));
+		this.setBackground(new Color(45, 132, 151));
 		this.setCursor(Cursor.getDefaultCursor());
 	}
 	@Override
@@ -70,6 +70,6 @@ public class CustomMenuButton extends JButton implements MouseListener, FocusLis
 	@Override
 	public void focusLost(FocusEvent e) {
 		// TODO Auto-generated method stub
-		this.setBackground(new Color(75, 162, 181));
+		this.setBackground(new Color(45, 132, 151));
 	}
 }

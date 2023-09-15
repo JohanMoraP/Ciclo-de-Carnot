@@ -2,13 +2,18 @@ package view;
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -17,21 +22,26 @@ public class CustomButton extends JButton implements MouseListener, FocusListene
 	private Color background;
 	private Color fontColor;
 	private ImageIcon originalIcon;
-	public CustomButton(String text, Color background, Color actionColor, Color fontColor, ImageIcon icon) {
+	private ImageIcon actionIcon;
+	private Dimension screenSize;
+	public CustomButton(String text, Color background, Color actionColor, Color fontColor, String urlIcon, ActionListener action) {
 		super(text);
 		this.fontColor = fontColor;
 		this.background = background;
 		this.actionColor = actionColor;
+		this.screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		this.originalIcon = new ImageIcon(new ImageIcon("images/" + urlIcon + ".png").getImage().getScaledInstance((int)(this.screenSize.getHeight() * 0.025), (int)(this.screenSize.getHeight() * 0.025), Image.SCALE_SMOOTH));
+		this.actionIcon = new ImageIcon(new ImageIcon("images/" + urlIcon + "_Dark.png").getImage().getScaledInstance((int)(this.screenSize.getHeight() * 0.025), (int)(this.screenSize.getHeight() * 0.025), Image.SCALE_SMOOTH));
+		this.addActionListener(action);
+		addComponents();
+	}
+	public void addComponents() {
+		this.setIcon(originalIcon);
 		this.setForeground(fontColor);
 		this.setBackground(background);
-		this.originalIcon = icon;
+		this.setFont(new Font(Font.SERIF, Font.BOLD, 16));
 		this.addMouseListener(this);
 		this.addFocusListener(this);
-		this.setFont(new Font(Font.SERIF, Font.BOLD, 16));
-		initComponents();
-	}
-	public void initComponents() {
-		
 	}
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -54,6 +64,7 @@ public class CustomButton extends JButton implements MouseListener, FocusListene
 		this.setBackground(actionColor);
 		this.setForeground(Color.DARK_GRAY);
 		this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		this.setIcon(actionIcon);
 	}
 	@Override
 	public void mouseExited(MouseEvent e) {
@@ -61,17 +72,20 @@ public class CustomButton extends JButton implements MouseListener, FocusListene
 		this.setBackground(background);
 		this.setForeground(fontColor);
 		this.setCursor(Cursor.getDefaultCursor());
+		this.setIcon(originalIcon);
 	}
 	@Override
 	public void focusGained(FocusEvent e) {
 		// TODO Auto-generated method stub
 		this.setBackground(actionColor);
 		this.setForeground(Color.DARK_GRAY);
+		this.setIcon(actionIcon);
 	}
 	@Override
 	public void focusLost(FocusEvent e) {
 		// TODO Auto-generated method stub
 		this.setBackground(background);
 		this.setForeground(fontColor);
+		this.setIcon(originalIcon);
 	}
 }

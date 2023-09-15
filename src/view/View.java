@@ -8,17 +8,17 @@ import java.util.ArrayList;
 
 public class View extends JFrame {
 	private PrincipalPanel principalPanel;
-	
+
 	public View(ActionListener action) {
 		this.setLayout(new GridBagLayout());
-		
+
 		this.setSize(1000, 700);
 		this.setLocationRelativeTo(null);
 		initComponents(action);
 		this.setTitle("Graficadora del ciclo de Carnot");
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 	}
 	private void initComponents(ActionListener action) {
 		GridBagConstraints constraints = new GridBagConstraints();
@@ -31,7 +31,16 @@ public class View extends JFrame {
 		this.add(new OptionMenuPanel(), constraints);
 		this.add(principalPanel, constraints);
 	}
+
 	public void paintGraphic(ArrayList<double []>coordenates) {
 		principalPanel.paintGraphic(coordenates);
+	}
+
+	public String [] getValues() {
+
+		return new String [] {principalPanel.getVarArea1().getText().strip(),
+				principalPanel.getVarArea2().getText().strip(),
+				principalPanel.getVarArea3().getText().strip(),
+				principalPanel.getVarArea4().getText().strip()};
 	}
 }

@@ -2,18 +2,18 @@ package view;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-public class CustomButton extends JButton implements MouseListener{
+public class CustomButton extends JButton implements MouseListener {
 	private Color actionColor;
 	private Color background;
 	private Color fontColor;
 	private ImageIcon originalIcon;
+
 	public CustomButton(String text, Color background, Color actionColor, Color fontColor, ImageIcon icon) {
 		super(text);
 		this.fontColor = fontColor;
@@ -25,11 +25,8 @@ public class CustomButton extends JButton implements MouseListener{
 		this.setFont(new Font(Font.SERIF, Font.BOLD, 16));
 		initComponents();
 	}
-	public void initComponents() {
-		
-	}
-	@Override
-	public void mouseClicked(MouseEvent e) {
+	p	
+
 		// TODO Auto-generated method stub
 		
 	}
@@ -55,4 +52,3 @@ public class CustomButton extends JButton implements MouseListener{
 		this.setBackground(background);
 		this.setForeground(fontColor);
 	}
-}

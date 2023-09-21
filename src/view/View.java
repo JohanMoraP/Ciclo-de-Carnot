@@ -1,8 +1,10 @@
 package view;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
@@ -11,7 +13,7 @@ public class View extends JFrame {
 
 	public View(ActionListener action) {
 		this.setLayout(new GridBagLayout());
-
+		this.setIconImage(new ImageIcon("images/icon4.png").getImage().getScaledInstance(400, 400, Image.SCALE_SMOOTH));
 		this.setSize(1000, 700);
 		this.setLocationRelativeTo(null);
 		initComponents(action);

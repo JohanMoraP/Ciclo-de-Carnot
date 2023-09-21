@@ -62,27 +62,38 @@ public class Logic {
 		return coordenates;
 	}
 
-	private void calculateVariables(double initialPression, double initialVolume, double maxVolume, double finalTemp) {
+	private void calculateVariables(double initialvolume, double volumeB, double maxTemp, double minTemp) {
 
 		//First cycle data
-		v1= initialVolume;
-		p1= initialPression;
-		t1= (p1*v1)/r;
+		v1= initialvolume;
+		t1= maxTemp;
+		p1=(r*t1)/(v1);
+
+		//Second cycle data
+		t2=maxTemp;
+		v2=volumeB;
+		p2=(r*t2)/(v2);
+
+		//Third cycle data	
+		t3=minTemp;	
+		v3=(Math.pow((t2/t3),(1/(gamma-1)))*v2);
+		p3=(r*t3)/(v3);
 
 		//Fourth cycle data
-		t4= finalTemp;
+		t4= minTemp;
 		v4=(Math.pow((t1/t4),(1/(gamma-1)))*v1);
 		p4=(r*t4)/(v4);
 
-		//Third cycle data
-		v3=maxVolume;
-		t3=t4;
-		p3=(r*t3)/(v3);
+		//	First cycle data
+		//	v1= volumeB;
+		//	p1= initialvolume;
+		//	t1= (p1*v1)/r;
 
-		//Second cycle data
-		t2=t1;
-		v2=(Math.pow((t3/t2),(1/(gamma-1)))*v3);
-		p2=(r*t2)/(v2);
+		//	Second cycle data
+		//	t2=t1;
+		//	v2=(Math.pow((t3/t2),(1/(gamma-1)))*v3);
+		//	p2=(r*t2)/(v2);
+
 	}
 
 	public String  valueFormatValues(String[] dataValues) {
@@ -99,14 +110,14 @@ public class Logic {
 					comprovateError=true;}
 			}
 		} 
-//		if(!comprovateError) {
-//			for (int i = 0; i < dataValues.length; i++) {
-//				if(comparatorMaxnumber(dataValues[i])) {
-//					message+=createMessageError(2, slotSelector(i+1));
-//					comprovateError=true;}
-//			}
-//		}
-//		
+		//		if(!comprovateError) {
+		//			for (int i = 0; i < dataValues.length; i++) {
+		//				if(comparatorMaxnumber(dataValues[i])) {
+		//					message+=createMessageError(2, slotSelector(i+1));
+		//					comprovateError=true;}
+		//			}
+		//		}
+		//		
 
 		if(comprovateError) {
 			return message;
@@ -139,10 +150,10 @@ public class Logic {
 		return comprovator;
 	}
 
-	
-	
-	
-	
+
+
+
+
 	public boolean comparatorMaxnumber(String text) {
 		boolean comprovator=false;
 		BigDecimal bigdec;

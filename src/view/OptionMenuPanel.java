@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
-import java.awt.Image;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,10 +14,10 @@ import javax.swing.border.EmptyBorder;
 
 public class OptionMenuPanel extends JPanel{
 
-	public OptionMenuPanel() {
-		initComponents();
+	public OptionMenuPanel(ActionListener listener) {
+		initComponents(listener);
 	}
-	public void initComponents() {
+	public void initComponents(ActionListener listener) {
 		this.setBackground(new Color(75, 162, 181));
 		this.setLayout(new GridLayout(9, 1));
 		GridBagConstraints constraints = new GridBagConstraints();
@@ -30,11 +30,12 @@ public class OptionMenuPanel extends JPanel{
 		label.setFont(new Font("Arial", Font.ITALIC, 25));
 		label.setBorder(labelBorder);
 		this.add(label, constraints);
-		JButton button1 = new CustomMenuButton("Gráfico", new ImageIcon("data/icono.png"));
+		JButton button1 = new CustomMenuButton("Gráfico", new ImageIcon("data/icono.png"), listener);
+		button1.setActionCommand(Constants.GRAPHIC);
 		this.add(button1, constraints);
-		JButton button2 = new CustomMenuButton("Explicación", new ImageIcon("data/icono2.png"));
+		JButton button2 = new CustomMenuButton("Explicación", new ImageIcon("data/icono2.png"), listener);
+		button2.setActionCommand(Constants.EXPLICATION);
 		this.add(button2, constraints);
-
 	}
 }
 

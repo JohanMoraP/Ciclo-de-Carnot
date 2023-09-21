@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
@@ -15,9 +16,10 @@ import javax.swing.border.EmptyBorder;
 
 public class CustomMenuButton extends JButton implements MouseListener, FocusListener{
 	private ImageIcon originalIcon;
-	public CustomMenuButton(String text, ImageIcon originalIcon) {
+	public CustomMenuButton(String text, ImageIcon originalIcon, ActionListener listener) {
 		super(text);
 		this.originalIcon = originalIcon;
+		this.addActionListener(listener);
 		initComponents();
 	}
 	public void initComponents() {

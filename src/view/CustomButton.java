@@ -24,6 +24,7 @@ public class CustomButton extends JButton implements MouseListener, FocusListene
 	private ImageIcon originalIcon;
 	private ImageIcon actionIcon;
 	private Dimension screenSize;
+	
 	public CustomButton(String text, Color background, Color actionColor, Color fontColor, String urlIcon, ActionListener action) {
 		super(text);
 		this.fontColor = fontColor;

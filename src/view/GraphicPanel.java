@@ -14,6 +14,7 @@ public class GraphicPanel extends JPanel implements MouseListener{
 
 	private Plot2DPanel graphic;
 	private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	private double [] coordenatesXA, coordenatesYA, coordenatesXB, coordenatesYB, coordenatesXC, coordenatesYC, coordenatesXD, coordenatesYD;
 	
 	public GraphicPanel() {
 		this.setBackground(Color.WHITE); 
@@ -29,12 +30,52 @@ public class GraphicPanel extends JPanel implements MouseListener{
 		this.add(graphic);
 	}
 	
-	public void paintGraphic(ArrayList<double []>coordenates) {
+	public void coordenatesDesingGraphic(ArrayList<double []>coordenates) {
+		coordenatesXA =coordenates.get(0);
+		coordenatesYA =coordenates.get(1);
+		coordenatesXB =coordenates.get(2);
+		coordenatesYB =coordenates.get(3);
+		coordenatesXC =coordenates.get(4);
+		coordenatesYC =coordenates.get(5);
+		coordenatesXD =coordenates.get(6);
+		coordenatesYD =coordenates.get(7);
+	}
+	public void paintGraphiCicleA() {
+		graphic.removeAllPlots();
 		graphic.addLegend("SOUTH"); 
-		graphic.addLinePlot("Fase 1", Color.blue, coordenates.get(0), coordenates.get(1));
-		graphic.addLinePlot("Fase 2", Color.red, coordenates.get(2), coordenates.get(3));
-		graphic.addLinePlot("Fase 3", Color.black, coordenates.get(4), coordenates.get(5));
-		graphic.addLinePlot("Fase 4", Color.green,coordenates.get(6), coordenates.get(7));
+		
+		graphic.addLinePlot("Fase 1", Color.blue, coordenatesXA, coordenatesYA);
+		graphic.addLinePlot(null, null, new double[]{0}, new double[]{0});
+	}
+	
+	public void paintGraphiCicleB() {
+		graphic.removeAllPlots();
+		graphic.addLegend("SOUTH"); 
+		
+		graphic.addLinePlot("Fase 1", Color.blue, coordenatesXA, coordenatesYA);
+		graphic.addLinePlot("Fase 2", Color.red, coordenatesXB, coordenatesYB);
+		graphic.addLinePlot(null, null, new double[]{0}, new double[]{0});
+	}
+	
+	public void paintGraphiCicleC() {
+		graphic.removeAllPlots();
+		graphic.addLegend("SOUTH"); 
+		
+		graphic.addLinePlot("Fase 1", Color.blue, coordenatesXA, coordenatesYA);
+		graphic.addLinePlot("Fase 2", Color.red, coordenatesXB, coordenatesYB);
+		graphic.addLinePlot("Fase 3", Color.black, coordenatesXC, coordenatesYC);
+		
+		graphic.addLinePlot(null, null, new double[]{0}, new double[]{0});
+	}
+	
+	public void paintGraphiCicleD() {
+		graphic.removeAllPlots();
+		graphic.addLegend("SOUTH"); 
+		
+		graphic.addLinePlot("Fase 1", Color.blue, coordenatesXA, coordenatesYA);
+		graphic.addLinePlot("Fase 2", Color.red, coordenatesXB, coordenatesYB);
+		graphic.addLinePlot("Fase 3", Color.black, coordenatesXC, coordenatesYC);
+		graphic.addLinePlot("Fase 4", Color.green,coordenatesXD, coordenatesYD);
 		graphic.addLinePlot(null, null, new double[]{0}, new double[]{0});
 	}
 

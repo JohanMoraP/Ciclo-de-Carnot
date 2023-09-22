@@ -27,10 +27,8 @@ public class CustomDialog extends JDialog {
         initComponents();
     }
     private void initComponents() {
-    	configButton();
     	this.getContentPane().setLayout(new GridBagLayout());
-        this.getContentPane().add(msgLabel, getConfig(0));
-        this.getContentPane().add(acceptButton, getConfig(1));
+    	configButton();
         this.setModal(true);
         this.pack();
         this.setResizable(false);
@@ -39,9 +37,13 @@ public class CustomDialog extends JDialog {
         this.setVisible(true);
     }
     private void configButton() {
-    	msgLabel = new JLabel("<html><h2 style=\"color:rgb(50,50,50); margin:20px\">"+message+"</h2></html>");
         acceptButton = new CustomButton("Aceptar", new Color(100,100,255), new Color(63,208,254), Color.WHITE, "accept", null);
-        
+        String[] parts = message.split("-");
+        this.getContentPane().add(new JLabel("<html><h2 style=\"color:rgb(50,50,50); margin:20px\">"+parts[0].strip()+"</h2></html>"), getConfig(0, new Insets(20,10,10,0)));
+        for(int i = 1; i < parts.length; i++) {
+        	this.getContentPane().add(new JLabel("<html><h2 style=\"color:rgb(50,50,50); margin:20px\">"+"- "+parts[i].strip()+"</h2></html>"), getConfig(i, new Insets(0,10,0,10)));
+        }
+        this.getContentPane().add(acceptButton, getConfig(parts.length, new Insets(20,20,20,20)));
         acceptButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
@@ -73,10 +75,10 @@ public class CustomDialog extends JDialog {
     	getContentPane().paintComponents(graphics2d);
     	graphics2d.dispose();
     }
-    public GridBagConstraints getConfig(int gridy) {
+    public GridBagConstraints getConfig(int gridy, Insets insets) {
 		GridBagConstraints config = new GridBagConstraints();
 		config.gridy = gridy;
-		config.insets = new Insets(20,20,20,20);
+		config.insets = insets;
 		return config;
 	}
 }

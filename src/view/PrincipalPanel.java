@@ -30,6 +30,7 @@ public class PrincipalPanel extends JPanel{
 	private JTextField volumeText;
 	private JTextField pressionText;
 	private JTextField temperatureText;
+	private JPanel variables;
 
 	public PrincipalPanel(ActionListener action){
 		this.setBackground(new Color(255, 255, 255));
@@ -69,10 +70,10 @@ public class PrincipalPanel extends JPanel{
 		graphButton.setActionCommand("graphic");
 	}
 	public void addComponents(ActionListener action) {
-		JLabel variable1 = new JLabel("Volumen inicial (m^3 / mol): ");
-		JLabel variable2 = new JLabel("Volumen en B (m^3 / mol): ");
-		JLabel variable3 = new JLabel("Temperatura caliente (K): ");
-		JLabel variable4 = new JLabel("Temperatura fría (K): ");
+		JLabel variable1 = new JLabel("Volumen inicial [m^3 / mol]: ");
+		JLabel variable2 = new JLabel("Volumen en B [m^3 / mol]: ");
+		JLabel variable3 = new JLabel("Temperatura caliente [K]: ");
+		JLabel variable4 = new JLabel("Temperatura fría [K]: ");
 
 		this.add(faseTitleLabel, new GridBagConstraints(0, 0, 4, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets((int)(screenSize.getHeight() * 0.05), (int)(screenSize.getWidth() * 0.2), (int)(screenSize.getHeight() * 0.05) ,0), 0, 0));
 				
@@ -81,9 +82,9 @@ public class PrincipalPanel extends JPanel{
 		this.add(variable2, new GridBagConstraints(1, 2, 1, 1,0,0,GridBagConstraints.CENTER,GridBagConstraints.BOTH,new Insets(0,0,0,0), 1, 0));
 		this.add(variable3, new GridBagConstraints(1, 3, 1, 1,0,0,GridBagConstraints.CENTER,GridBagConstraints.BOTH,new Insets(0,0,0,0), 1, 0));
 		this.add(variable4, new GridBagConstraints(1, 4, 1, 1,0,0,GridBagConstraints.CENTER,GridBagConstraints.BOTH,new Insets(0,0,0,0), 1, 0));
-		this.add(graphButton, new GridBagConstraints(1, 5, 2, 1,0,0,GridBagConstraints.NORTH,GridBagConstraints.NONE,new Insets((int)(screenSize.getHeight() * 0.05),0,0,0), 1, 0));
+		this.add(graphButton, new GridBagConstraints(1, 5, 2, 1,0,0,GridBagConstraints.NORTH,GridBagConstraints.NONE,new Insets((int)(screenSize.getHeight() * 0.03),0,(int)(screenSize.getHeight() * 0.03),0), 1, 0));
 		
-		JPanel variables = new JPanel(new GridBagLayout());
+		variables = new JPanel(new GridBagLayout());
 		variables.setBackground(new Color(230, 247, 255));
 		GridBagConstraints gbc = new GridBagConstraints();
 		
@@ -101,6 +102,7 @@ public class PrincipalPanel extends JPanel{
 		
 		gbc.gridx = 1;
 		volumeText = new JTextField(10);
+		volumeText.setEditable(false);
 		variables.add(volumeText, gbc);
 		
 		gbc.gridy = 2;
@@ -110,6 +112,7 @@ public class PrincipalPanel extends JPanel{
 		
 		gbc.gridx = 1;
 		pressionText = new JTextField(10);
+		pressionText.setEditable(false);
 		variables.add(pressionText, gbc);
 		
 		gbc.gridx = 0;
@@ -119,9 +122,10 @@ public class PrincipalPanel extends JPanel{
 		
 		gbc.gridx = 1;
 		temperatureText =  new JTextField(10);
+		temperatureText.setEditable(false);
 		variables.add(temperatureText, gbc);
 		add(variables, new GridBagConstraints(1, 6, 2, 1,0,0,GridBagConstraints.NORTH,GridBagConstraints.BOTH,new Insets(10,0,0,0), 1, 0));
-		
+		variables.setVisible(false);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setViewportView(varArea1);
@@ -159,6 +163,9 @@ public class PrincipalPanel extends JPanel{
 		this.revalidate();
 		this.repaint();
 	}
+	public void addVariablesPanel() {
+		variables.setVisible(true);
+	}
 
 
 	public void paintGraphic(ArrayList<double []>coordenates) {
@@ -190,6 +197,10 @@ public class PrincipalPanel extends JPanel{
 	}
 	public GraphicPanel getGraphic() {
 		return graphic;
+	}
+	
+	public void setFaseTitleLabel(String title) {
+		this.faseTitleLabel.setText("<html><h1>"+title+"</h1></html>");
 	}
 	public void setGraphic(GraphicPanel graphic) {
 		this.graphic = graphic;

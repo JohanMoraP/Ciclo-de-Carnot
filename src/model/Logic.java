@@ -84,17 +84,6 @@ public class Logic {
 		t4= minTemp;
 		v4=(Math.pow((t1/t4),(1/(gamma-1)))*v1);
 		p4=(r*t4)/(v4);
-
-		//	First cycle data
-		//	v1= volumeB;
-		//	p1= initialvolume;
-		//	t1= (p1*v1)/r;
-
-		//	Second cycle data
-		//	t2=t1;
-		//	v2=(Math.pow((t3/t2),(1/(gamma-1)))*v3);
-		//	p2=(r*t2)/(v2);
-
 	}
 
 	public String  valueFormatValues(String[] dataValues) {
@@ -102,24 +91,20 @@ public class Logic {
 		boolean comprovateError=false;
 
 		for (int i = 0; i < dataValues.length; i++) {
-			if ( notIsNumber(dataValues[i])) {
+			if(dataValues[i] == null || dataValues[i].strip().length() == 0) {
+				message+=createMessageError(0, slotSelector(i+1));
+				comprovateError=true;
+			}else if ( notIsNumber(dataValues[i].strip())) {
 				message+=createMessageError(1, slotSelector(i+1));
 				comprovateError=true;}
-			else {
-				if(comparatorMaxnumber(dataValues[i])) {
-					message+=createMessageError(2, slotSelector(i+1));
-					comprovateError=true;}
+			else if(comparatorMaxnumber(dataValues[i].strip())){
+				message+=createMessageError(2, slotSelector(i+1));
+				comprovateError=true;
+			}else if(Double.parseDouble(dataValues[i].strip()) == 0){
+				message+=createMessageError(3, slotSelector(i+1));
+				comprovateError=true;
 			}
 		} 
-		//		if(!comprovateError) {
-		//			for (int i = 0; i < dataValues.length; i++) {
-		//				if(comparatorMaxnumber(dataValues[i])) {
-		//					message+=createMessageError(2, slotSelector(i+1));
-		//					comprovateError=true;}
-		//			}
-		//		}
-		//		
-
 		if(comprovateError) {
 			return message;
 		}else {
@@ -130,18 +115,21 @@ public class Logic {
 
 	public String createMessageError(int errorNum, String Space) {
 		String message;
-		if(errorNum==1) {
-			message="\n-En el campo "+Space+" hay valores no numericos";
-		}else {
-			message="\n-En el campo "+Space+" execede el limite numerico soportado (2,147,483,648)";
-		}
-		return message;
+		return switch (errorNum){
+		case 0 -> message="\n-El campo "+Space+" se encuentra vacio";
+		case 1 -> message="\n-En el campo "+Space+" hay valores no numericos";
+		case 2 -> message="\n-En el campo "+Space+" excede el limite numerico soportado (2,147,483,648)";
+		default -> message="\n-El campo "+Space+" no puede llevar el número 0";
+		};
 	}
 
 	public boolean notIsNumber(String text) {
 		boolean comprovator=false;
 		int countPoint=0;
 		for (int i = 0; i < text.length(); i++) {
+			if(text.charAt(i)=='.' && (i + 1) == text.length()) {
+				return true;
+			}
 			if(text.charAt(i)=='.' && countPoint==0) {
 				countPoint++;
 			}
@@ -169,13 +157,13 @@ public class Logic {
 
 	public String slotSelector(int num) {
 		if(num==1) {
-			return "presion inicial";
-		}else if(num==2) {
 			return "volumen inicial";
+		}else if(num==2) {
+			return "volumen en B";
 		}else if(num==3) {
-			return "volumen maximo";
+			return "temperatura caliente";
 		}else {
-			return "temperatura final";
+			return "temperatura fria";
 		}
 	}
 

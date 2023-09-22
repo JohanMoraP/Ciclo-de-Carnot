@@ -37,8 +37,10 @@ public class View extends JFrame {
 	}
 
 	public void paintGraphic(ArrayList<double []>coordenates, ArrayList<ArrayList<Double>> values) {
+		totalPanel.getPrincipalPanel().addVariablesPanel();
 		totalPanel.getPrincipalPanel().paintGraphic(coordenates);
 		if(graphicStage==1) {
+			
 			totalPanel.getPrincipalPanel().removeNextButton();
 		}else if (graphicStage==4) {
 			totalPanel.getPrincipalPanel().removeLastButton();
@@ -48,7 +50,9 @@ public class View extends JFrame {
 		}
 		totalPanel.getPrincipalPanel().addNextButton();
 		graphicStage =1;
+		setTitleLabel("Gráfica(Fase "+graphicStage+")");
 		changeGraphic(values);
+		
 	}
 
 	public void nextStage(ArrayList<ArrayList<Double>> values) {
@@ -64,6 +68,7 @@ public class View extends JFrame {
 			graphicStage++;
 			changeGraphic(values);
 		}	
+		setTitleLabel("Gráfica(Fase "+graphicStage+")");
 	}
 
 	public void LastStage(ArrayList<ArrayList<Double>> values) {
@@ -77,6 +82,7 @@ public class View extends JFrame {
 			graphicStage--;
 			changeGraphic(values);
 		}
+		setTitleLabel("Gráfica(Fase "+graphicStage+")");
 	}
 	
 	public void changeGraphic(ArrayList<ArrayList<Double>> values) {
@@ -114,6 +120,10 @@ public class View extends JFrame {
 		totalPanel.showExplication();
 	}
 
+	public void setTitleLabel(String title) {
+		totalPanel.getPrincipalPanel().setFaseTitleLabel(title);
+	}
+	
 	public void setValues(double volume, double pression, double temperature){
 		totalPanel.setVolume(volume);
 		totalPanel.setPression(pression);
